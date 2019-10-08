@@ -1,0 +1,25 @@
+{
+  "name": "xc-mp-cli",
+  "version": "1.0.0",
+  "description": "",
+  "bin": {
+    "mp": "bin/mp",
+    "mp-add": "bin/mp-add",
+    "mp-delete": "bin/mp-delete",
+    "mp-list": "bin/mp-list",
+    "mp-init": "bin/mp-init"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "commander": "^2.19.0",
+    "download-git-repo": "^1.1.0",
+    "inquirer": "^6.2.2",
+    "ora": "^3.2.0"
+  },
+  "author": "刘硕 <liushuo@xinchanedu.com>",
+  "license": "ISC"
+}
