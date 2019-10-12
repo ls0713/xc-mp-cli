@@ -35,10 +35,14 @@ let question = [
     }
   }
 ]
-
+// 交互式命令行展现
 inquirer
   .prompt(question).then(answers => {
-    // answers 就是用户输入的内容，是个对象
+    /**
+    * answers 就是用户输入的内容，是个对象
+    * @params=name type=String description=github user
+    * @params=url tyep=String description=github 仓库
+    */
     let { name, url } = answers;
     // 过滤 unicode 字符
     tplObj[name] = url.replace(/[\u0000-\u0019]/g, '')

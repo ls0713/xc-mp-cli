@@ -1,12 +1,20 @@
 #!/usr/bin/env node
 
+// 命令行界面
 const program = require('commander')
+// 装饰输出
 const chalk = require('chalk')
+// 命令行对应输出显示图标
 const ora = require('ora')
+// 下载对应模板
 const download = require('download-git-repo')
+// 读取模版名称
 const tplObj = require(`${__dirname}/../template`)
+// 路径模块
 const path = require('path')
+// 使用子进程进行install
 const exec = require('child_process').exec
+const process = require('process')
 
 
 program
@@ -15,7 +23,10 @@ program.parse(process.argv)
 // 当没有输入参数的时候提示
 if (program.args.length < 1) return program.help()
 
-// 好比 vue init webpack project-name 的命令一样，第一个参数是 webpack，第二个参数是 project-name
+/**
+ * @params=program.args[0] type=String description=模板名称
+ * @params=program.args[1] type=String description=项目名称 
+ */
 let templateName = program.args[0]
 let projectName = program.args[1]
 // 校验参数
@@ -51,8 +62,10 @@ download (
     console.log(`\n    cd ${projectName} \n`)
     const icon = ora('auto npm install... ')
     icon.start()
-    const home = path.resolve(__dirname, '..')
+    const home = process.cwd()
+    console.log('process', process.cwd())
     const projectPath = path.join(home, projectName)
+    if (!projectName.length)  return
     exec('npm install', {cwd: projectPath}, (error, stdout, stderr) => {
       console.log(process.cwd())
       if (error) {
